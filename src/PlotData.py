@@ -1,5 +1,4 @@
 import pandas as pd
-from abc import ABC, abstractmethod
 import mplfinance as mpf
 import matplotlib.pyplot as plt
 
@@ -11,7 +10,7 @@ class PlotData:
         'linewidth': 1.5,
         'grid_alpha': 0.5,
         'xticks_rotation': 45,
-        'mpf_style': 'charles',
+        'mpf_style': 'yahoo',
         'colors': ['blue', 'orange', 'green', 'red'],
     }
 
@@ -31,9 +30,6 @@ class PlotData:
         plt.xticks(rotation=s['xticks_rotation'])
         plt.tight_layout()
         plt.show()
-
-    def plotVolume(self, df, ticker, timeframe, title, xlabel, ylabel):
-        pass
 
     def plotCandle(self, df, ticker, timeframe, title, xlabel, ylabel):
         s = self.STYLE
@@ -99,6 +95,7 @@ class PlotData:
 
         mpf.plot(df1_slice, type=plot_type, ax=ax1, volume=av1)
         mpf.plot(df2_slice, type=plot_type, ax=ax2, volume=av2)
+        mpf.make_mpf_style(base_mpf_style=s['mpf_style'], rc={'axes.grid': True})
 
         ax1.set_title(ticker)
         ax2.set_title(df2['ticker'])

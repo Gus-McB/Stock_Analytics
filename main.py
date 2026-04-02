@@ -29,4 +29,4 @@ if __name__ == "__main__":
         "ylabel": "Price"
     }
 
-    plot.compareClosingPrice(data_AAPL, data_TSLA, title='AAPL vs TSLA - Normalised Closing Price')
+    plot.crossPlot(data_AAPL, data_TSLA, plot_type='candle', ticker='AAPL', title='AAPL vs TSLA')
